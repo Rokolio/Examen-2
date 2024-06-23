@@ -1,17 +1,17 @@
 // Examen II
-// Crear un menú con las siguientes opciones:
+// Crear un menú con las siguientes opciones: (TERMINADO)
 // 1. Fórmula cuadrática
 // 2. Tablas de multiplicar
-// 		* El menú debe ser cíclico, puede utilizar cualquiera de las estructuras de repetición para la parte cíclica.
-// 		* Debe contener una opción de salir en el menú para terminar el programa
+// 		* El menú debe ser cíclico, puede utilizar cualquiera de las estructuras de repetición para la parte cíclica. (TERMINADO)
+// 		* Debe contener una opción de salir en el menú para terminar el programa (TERMINADO)
 
-// 1. El programa es cíclico (5%)
+// 1. El programa es cíclico (5%) (TERMINADO)
 
 // 2. Fórmula cuadrática:
 // 		* Validar que el valor de a, no sea igual a cero (6%)
 // 		* Validar que el resultado dentro de la raíz cuadrada no sea negativa (6%)
 
-// 3. Tablas de multiplicar:
+// 3. Tablas de multiplicar: (TERMINADO)
 // 		* Pide al usuario que número de tabla desea visualizar (3%)
 // 		* Utiliza una estructura cíclica para mostrar el resultado (2%)
 // 		* Muestra el resultado de la tabla según digitado por el usuario (3%)
@@ -31,36 +31,36 @@ Funcion FormulaGeneralCuadratica
 	Escribir "********************************"
 	Escribir "**  1. Formula cuadratica     **"
 	Escribir "********************************"
-	Definir a, b, c como real
-	Escribir "Ingrese los coeficientes a, b y c"
-	Escribir "Ingrese el coeficiente a "
-	Leer a
+    Definir a, b, c, discriminante, x1, x2 como real
+	
+    Escribir "Ingresa el coeficiente a:"
+    Leer a
 	
     Si a = 0 Entonces
-        Escribir "El valor en el denominador es 0 por lo que la ecuación no es cuadrática."
-    FinSi
-	
-	Escribir "Ingrese el coeficiente b "
-	Leer b
-	Escribir "Ingrese el coeficiente c "
-	Leer c
-	
-	discriminante <- b^2 - 4*a*c
-    
-    Si discriminante >= 0 Entonces
-        x1 <- (-b + Raiz(discriminante)) / (2*a)
-        x2 <- (-b - Raiz(discriminante)) / (2*a)
-        
-        Escribir "Raíz 1 (x1): ", x1
-        Escribir "Raíz 2 (x2): ", x2
+        Escribir "El valor del coeficiente a no puede ser igual a cero, pues la ecuacion no en si misma no seria cuadratica"
     Sino
-        x1 <- (-b) / (2*a)
-        x2 <- Raiz(Abs(discriminante)) / (2*a)
-        
-        Escribir "Raíz 1 (x1): ", x1, " + ", x2, "i"
-        Escribir "Raíz 2 (x2): ", x1, " - ", x2, "i"
-    FinSi
+        Escribir "Ingresa el coeficiente b:"
+        Leer b
+        Escribir "Ingresa el coeficiente c:"
+        Leer c
+		
+        discriminante <- b^2 - 4*a*c
+		
+        Si discriminante < 0 Entonces
+			Limpiar Pantalla
+            Escribir "El resultado  en el discriminante es negativo por tanto no es racional (raíces imaginarias)."
+			Escribir " "
+			Escribir "Pulse cualquier tecla para volver al menu principal"
+        Sino
+            x1 <- (-b + Raiz(discriminante)) / (2*a)
+            x2 <- (-b - Raiz(discriminante)) / (2*a)
+            Escribir "Las raíces son:"
+            Escribir "x1 =", x1
+            Escribir "x2 =", x2
+        Fin Si
+    Fin Si
 	Esperar tecla
+	Limpiar Pantalla
 FinFuncion
 
 Funcion TablaDeMultiplicar
@@ -72,12 +72,16 @@ Funcion TablaDeMultiplicar
     
     Escribir "Indique que numero de tabla desea visualizar:"
     Leer minumero
+	Limpiar Pantalla
     
     Para i <- 1 Hasta 10 con paso 1
         resultado <- minumero * i
         Escribir minumero, " x ", i, " = ", resultado
     FinPara
+	Escribir " "
+	Escribir "Pulse cualquier tecla para volver al menu principal"
 	Esperar tecla
+	Limpiar Pantalla
 FinFuncion
 
 Algoritmo Examen2doParcial
@@ -89,10 +93,12 @@ Algoritmo Examen2doParcial
 			2:
 				TablaDeMultiplicar
 			3:	
+				Limpiar Pantalla
 				Escribir "Hasta luego"
 			de otro modo:
-				escribir "Opcion no valida"
-				Esperar 3 Segundos
+				Limpiar Pantalla
+				escribir "Opcion no valida, pulse una tecla para volverlo a intentar"
+				Esperar Tecla
 		FinSegun
 	Hasta Que op = 3
 FinAlgoritmo
