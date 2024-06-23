@@ -1,4 +1,5 @@
 // Examen II
+// JUAN CARLOS SOTO T32421181
 // Crear un menú con las siguientes opciones:
 // 1. Fórmula cuadrática
 // 2. Tablas de multiplicar
